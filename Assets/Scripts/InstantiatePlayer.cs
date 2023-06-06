@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //player의 위치 랜덤 지정 - 기본 아이템(손전등 등) 옆에 같이 띄워줌
-public class InstantiateObject : MonoBehaviour
+public class InstantiatePlayer : MonoBehaviour
 {
     public GameObject prefab;
     public Terrain terrain;
@@ -15,7 +15,7 @@ public class InstantiateObject : MonoBehaviour
 
     private float xTerrainPos;
     private float zTerrainPos;
-    public int count = 0;
+    //public int count = 0;
 
 
     void Start()
