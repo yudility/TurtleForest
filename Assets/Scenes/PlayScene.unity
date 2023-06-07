@@ -578,6 +578,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Flashlight
       objectReference: {fileID: 0}
+    - target: {fileID: 1784546617053589712, guid: 65ecef68e3e15304d86b1220d1ebce53, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 65ecef68e3e15304d86b1220d1ebce53, type: 3}
 --- !u!1001 &639339258
