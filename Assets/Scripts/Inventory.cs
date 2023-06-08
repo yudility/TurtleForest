@@ -8,7 +8,7 @@ public class Inventory : MonoBehaviour
     public static Inventory instance;
     private void Awake()
     {
-        if(instance != null)
+        if (instance != null)
         {
             Destroy(gameObject);
             return;
@@ -25,31 +25,32 @@ public class Inventory : MonoBehaviour
     public OnChangeItem onChangeItem;
 
     //획득한 아이템 리스트
-    public List<Item>items = new List<Item>();
+    public List<Item> items = new List<Item>();
 
     private int slotCnt;
     public int SlotCnt
     {
         get => slotCnt;
-        set{
+        set
+        {
             slotCnt = value;
             if (onSlotCountChange != null)
-            onSlotCountChange.Invoke(slotCnt);
+                onSlotCountChange.Invoke(slotCnt);
         }
     }
 
     void Start()
     {
-        SlotCnt = 9; 
+        SlotCnt = 9;
     }
 
     public bool AddItem(Item _item)
     {
-        if(items.Count < SlotCnt)
+        if (items.Count < SlotCnt)
         {
             items.Add(_item);
             if (onChangeItem != null)
-            onChangeItem.Invoke(); //아이템 추가에 성공하면 OnChangeItem호출
+                onChangeItem.Invoke(); //아이템 추가에 성공하면 OnChangeItem호출
             return true;
         }
         return false;
@@ -64,7 +65,7 @@ public class Inventory : MonoBehaviour
     //플레이어와 필드아이템이 충돌하면 AddItem을 호출해서 Item 정보를 인자로 넘겨줌
     private void OnTriggerEnter(Collider collision)
     {
-        if(collision.CompareTag("FieldItem"))
+        if (collision.CompareTag("FieldItem"))
         {
             FieldItems fieldItems = collision.GetComponent<FieldItems>();
             if (AddItem(fieldItems.GetItem()))
