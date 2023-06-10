@@ -8,6 +8,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/StartScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/MergeTest/PlayScene-test.unity
+    guid: 459f4a818967f564298b562c02c6cfab
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 9a1c3be06a28c6c46a01db43ad1dfd62, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 1a2305979737712409dd097b10529465, type: 2}
