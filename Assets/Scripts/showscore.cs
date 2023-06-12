@@ -21,6 +21,6 @@ public class showscore : MonoBehaviour
         // 게임 종료 시 보이게 하기
         score.text = string.Format("time {0:0}:{1:00}", minutes, seconds);
         int hp_percent = Mathf.FloorToInt(score_hp*100);
-        hp.text = string.Format("hp {0}",hp_percent);
+        hp.text = string.Format("hp {0}",hp_percent); 
     }
 }
