@@ -72,3 +72,9 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+
+#lfs
+/[Aa]ssets/Oculus/LipSync/Plugins/MacOSX/OVRLipSync.bundle
+/[Aa]ssets/Oculus/LipSync/Plugins/iOS/libOVRLipSync.dylib
+
+
