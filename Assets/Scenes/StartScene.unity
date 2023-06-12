@@ -1084,7 +1084,7 @@ GameObject:
   - component: {fileID: 301446263}
   - component: {fileID: 301446262}
   m_Layer: 5
-  m_Name: Text (TMP) (2)
+  m_Name: 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1295,7 +1295,7 @@ GameObject:
   - component: {fileID: 377814405}
   - component: {fileID: 377814404}
   m_Layer: 5
-  m_Name: Text (TMP) (1)
+  m_Name: 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2057,7 +2057,7 @@ GameObject:
   - component: {fileID: 601062855}
   - component: {fileID: 601062854}
   m_Layer: 5
-  m_Name: Text (TMP) (4)
+  m_Name: 5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2672,7 +2672,7 @@ GameObject:
   - component: {fileID: 780246990}
   - component: {fileID: 780246989}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4110,7 +4110,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'name
+  m_text: 'score
 
 '
   m_isRightToLeft: 0
@@ -4278,9 +4278,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'name
-
-'
+  m_text: score
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4865,7 +4863,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'name
+  m_text: 'score
 
 '
   m_isRightToLeft: 0
@@ -6438,9 +6436,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'name
-
-'
+  m_text: score
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -6664,7 +6660,7 @@ GameObject:
   - component: {fileID: 1837446132}
   - component: {fileID: 1837446131}
   m_Layer: 5
-  m_Name: Text (TMP) (3)
+  m_Name: 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7144,7 +7140,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'name
+  m_text: 'score
 
 '
   m_isRightToLeft: 0

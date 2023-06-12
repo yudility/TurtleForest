@@ -34,7 +34,7 @@ public class NewBehaviourScript : MonoBehaviour
             if (i < leaderboardNames.Count)
             {
                 PlayerNames[i].text = leaderboardNames[i];
-                if (leaderboardScores[i] > 1)
+                if (leaderboardScores[i] >= 1)
                 {
                     int minutes = Mathf.FloorToInt(8 - leaderboardScores[i] / 60f);
                     int seconds = Mathf.FloorToInt(60 - leaderboardScores[i] % 60f);
