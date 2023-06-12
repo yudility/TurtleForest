@@ -42,7 +42,9 @@ public class NewBehaviourScript : MonoBehaviour
                 }
                 else
                 {
-                    PlayerScores[i].text = leaderboardScores[i].ToString() + "hp";
+                    int hp_percent = Mathf.FloorToInt(leaderboardScores[i]*100);
+                    //PlayerScores[i].text = leaderboardScores[i].ToString() + "hp";
+                    PlayerScores[i].text = string.Format("{0}hp",hp_percent);
                 }
             }
             else
@@ -87,7 +89,7 @@ public class NewBehaviourScript : MonoBehaviour
         {
             for (int j = i + 1; j < leaderboardScores.Count; j++)
             {
-                if (leaderboardScores[j] < leaderboardScores[i])
+                if (leaderboardScores[j] > leaderboardScores[i])
                 {
                     // Swap scores
                     float tempScore = leaderboardScores[i];
