@@ -8,7 +8,19 @@ public class HPgauge : MonoBehaviour
     Image HPBar;
     float maxHP = 300f;
     public static float HP;
-    // Start is called before the first frame update
+
+    void Awake()
+    {
+        //GameManager.Instance.OnGameStateChanged += OnGameStateChanged; //이벤트 구독
+        GameManager.GetInstance().OnGameStateChanged += OnGameStateChanged;
+    }
+
+    void OnDestroy()
+    {
+        GameManager.GetInstance().OnGameStateChanged -= OnGameStateChanged; //이벤트 구독 취소
+    }
+
+
     void Start()
     {
         HPBar = GetComponent<Image>();
