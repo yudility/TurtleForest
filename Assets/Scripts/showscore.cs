@@ -9,7 +9,7 @@ public class showscore : MonoBehaviour
     [SerializeField] TextMeshProUGUI score; // Reference to the UI text element to display the UserInput
     [SerializeField] TextMeshProUGUI hp;
 
-    private void Start()
+    private void Update()
     {
         // Retrieve the User Input value from PlayerPrefs
         float score_time = PlayerPrefs.GetFloat("TimeScore");

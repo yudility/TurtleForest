@@ -6,8 +6,22 @@ using OVR;
 
 public class GameManager : MonoBehaviour
 {
-    static GameManager Instance; //싱글톤 유일성 보장.
+    private static GameManager Instance; //싱글톤 유일성 보장.
     public static GameManager GetInstance() { init(); return Instance; }
+
+    public GameState CurrentGameState { get; private set; } //게임 state. 
+
+    public delegate void GameStateChangeHandler(GameState newGameState);
+    public event GameStateChangeHandler OnGameStateChanged; //이벤트
+
+    public void SetState(GameState newGameState) //게임 스테이트 설정
+    {
+        if (newGameState == CurrentGameState)
+            return;
+
+        CurrentGameState = newGameState;
+        OnGameStateChanged?.Invoke(newGameState);
+    }
 
     public GameObject gameOverUI;
     public GameObject rescuedUI;
@@ -65,12 +79,16 @@ public class GameManager : MonoBehaviour
         {
             escapeUI.SetActive(true);
             PlayerStop();
+            //GameState currentGameState = GameManager.Instance.CurrentGameState;
+            GameManager.Instance.SetState(GameState.gameover); //게임 스테이트 변경
             Debug.Log("escape!");
         }
         else if (exitName == "Ladder")
         {
             rescuedUI.SetActive(true);
             PlayerStop();
+           //GameState currentGameState = GameManager.Instance.CurrentGameState;
+            GameManager.Instance.SetState(GameState.gameover);
             Debug.Log("rescued!");
         }
     }
