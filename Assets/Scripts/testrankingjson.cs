@@ -62,11 +62,16 @@ public class testrankingjson : MonoBehaviour
 
     private void SortLeaderboard()
     {
+        Debug.Log("SortLeaderboard");
         string nickname = PlayerPrefs.GetString("UserInput");
         float score_time = PlayerPrefs.GetFloat("TimeScore");
+
+        Debug.Log("UserInput: "+ nickname);
+        Debug.Log("TimeScore: " + score_time);
+
         if (score_time != 0)
         {
-            leaderboardNames.Add(nickname);
+            //leaderboardNames.Add(nickname);
             leaderboardScores.Add(score_time);
         }
         else
@@ -114,6 +119,7 @@ public class testrankingjson : MonoBehaviour
 
     private void SaveLeaderboard()
     {
+        Debug.Log("SaveLeaderboard");
         // Convert lists to JSON strings
         string namesJson = JsonUtility.ToJson(leaderboardNames);
         string scoresJson = JsonUtility.ToJson(leaderboardScores);
@@ -126,6 +132,7 @@ public class testrankingjson : MonoBehaviour
 
     private void LoadLeaderboard()
     {
+        Debug.Log("LoadLeaderboard");
         // Load JSON strings from PlayerPrefs
         string namesJson = PlayerPrefs.GetString(LeaderboardNamesKey);
         string scoresJson = PlayerPrefs.GetString(LeaderboardScoresKey);
