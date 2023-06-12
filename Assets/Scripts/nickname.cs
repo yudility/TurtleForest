@@ -4,11 +4,9 @@ using UnityEngine.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
-
-public class endpage : MonoBehaviour
+public class nickname : MonoBehaviour
 {
     [SerializeField] TMP_InputField nameInput;
-    public Button submit;
 
     // Start is called before the first frame update
     void Start()
@@ -25,8 +23,5 @@ public class endpage : MonoBehaviour
         // Save the user input using PlayerPrefs or any other desired method
         PlayerPrefs.SetString("UserInput", userInput);
 
-        // Change the scene to the desired scene
-        SceneManager.LoadScene("start");
     }
-
 }
