@@ -19,6 +19,8 @@ public class HPgauge : MonoBehaviour
     void Update()
     {
         HP -= Time.deltaTime;
-        HPBar.fillAmount = HP / maxHP;
+        HPBar.fillAmount = HP / maxHP; 
+        //HP 저장 
+        PlayerPrefs.SetFloat("HpScore", HP/maxHP);
     }
 }

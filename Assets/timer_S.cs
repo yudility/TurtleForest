@@ -1,7 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using TMPro;
 
 public class timer_S : MonoBehaviour
 {
@@ -20,7 +21,9 @@ public class timer_S : MonoBehaviour
             time -= Time.deltaTime;
             //text_time[0].text = ((int)time / 3600).ToString();
             text_time[0].text = ((int)time / 60%60).ToString();
-            text_time[1].text = ((int)time % 60 ).ToString();
+            text_time[1].text = ((int)time % 60 ).ToString(); 
+            //시간 저장
+            PlayerPrefs.SetFloat("TimeScore", time);
 
     }
 }
