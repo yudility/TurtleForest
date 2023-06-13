@@ -30,8 +30,12 @@ public class HPgauge : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        HP -= Time.deltaTime;
-        HPBar.fillAmount = HP / maxHP;
+        if (GameManager.GetInstance().CurrentGameState == GameState.Gameplay)
+        {
+            HP -= Time.deltaTime;
+            HPBar.fillAmount = HP / maxHP;
+        }
+       
         //HP 저장 
         //PlayerPrefs.SetFloat("HpScore", HP / maxHP);
     }
@@ -39,6 +43,8 @@ public class HPgauge : MonoBehaviour
 
     private void OnGameStateChanged(GameState newgameState)
     {
+        
         PlayerPrefs.SetFloat("HpScore", HP / maxHP); //gamestate 변경 이벤트 발생시 저장
+        Debug.Log("newgameState : " + newgameState + " // HpScore saved :" + HP / maxHP);
     }
 }

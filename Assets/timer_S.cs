@@ -29,18 +29,21 @@ public class timer_S : MonoBehaviour
 
     private void OnGameStateChanged(GameState newgameState)
     {
+        
         PlayerPrefs.SetFloat("TimeScore", time); //gamestate 변경 이벤트 발생시 저장
+        Debug.Log("newgameState : " + newgameState + " // timer saved :" + time);
     }
 
     void Update() 
     {
-
+        if (GameManager.GetInstance().CurrentGameState == GameState.Gameplay)
+        {
             time -= Time.deltaTime;
             //text_time[0].text = ((int)time / 3600).ToString();
-            text_time[0].text = ((int)time / 60%60).ToString();
-            text_time[1].text = ((int)time % 60 ).ToString(); 
+            text_time[0].text = ((int)time / 60 % 60).ToString();
+            text_time[1].text = ((int)time % 60).ToString();
             //시간 저장
-           
+        }
 
     }
 }

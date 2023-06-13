@@ -20,6 +20,14 @@ public class VolumeSettings : MonoBehaviour
         {
             activeSettings = !activeSettings;
             settingsPanel.SetActive(activeSettings);
+
+            GameState currentGameState = GameManager.GetInstance().CurrentGameState;
+            GameState newGameState = currentGameState == GameState.Gameplay ? GameState.Pause : GameState.Gameplay;
+
+            Debug.Log("currentGameState : " + currentGameState);
+            Debug.Log("newGameState : " + newGameState);
+
+            GameManager.GetInstance().SetState(newGameState);
         }
     }
 }

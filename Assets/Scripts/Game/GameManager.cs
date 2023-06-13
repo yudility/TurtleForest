@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
         OnGameStateChanged?.Invoke(newGameState);
     }
 
+
     public GameObject gameOverUI;
     public GameObject rescuedUI;
     public GameObject escapeUI;
