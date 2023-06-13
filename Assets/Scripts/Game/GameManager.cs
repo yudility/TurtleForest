@@ -6,16 +6,16 @@ using OVR;
 
 public class GameManager : MonoBehaviour
 {
-    private static GameManager Instance; //½Ì±ÛÅæ À¯ÀÏ¼º º¸Àå.
+    private static GameManager Instance; //ì‹±ê¸€í†¤ ìœ ì¼ì„± ë³´ì¥.
     public static GameManager GetInstance() { init(); return Instance; }
     
 
-    public GameState CurrentGameState { get; private set; } //°ÔÀÓ state. 
+    public GameState CurrentGameState { get; private set; } //ê²Œì„ state. 
 
     public delegate void GameStateChangeHandler(GameState newGameState);
-    public event GameStateChangeHandler OnGameStateChanged; //ÀÌº¥Æ®
+    public event GameStateChangeHandler OnGameStateChanged; //ì´ë²¤íŠ¸
 
-    public void SetState(GameState newGameState) //°ÔÀÓ ½ºÅ×ÀÌÆ® ¼³Á¤
+    public void SetState(GameState newGameState) //ê²Œì„ ìŠ¤í…Œì´íŠ¸ ì„¤ì •
     {
         if (newGameState == CurrentGameState)
             return;
@@ -42,10 +42,10 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         
-        float hp = HPgauge.HP; //Àü¿ª º¯¼ö hp °ªÀ» °¡Á®¿À±â
+        float hp = HPgauge.HP; //ì „ì—­ ë³€ìˆ˜ hp ê°’ì„ ê°€ì ¸ì˜¤ê¸°
         //Debug.Log("hp:" + hp)
 
-        if (hp <= 0.0) //¹İµå½Ã °ÔÀÓ¿À¹ö
+        if (hp <= 0.0) //ë°˜ë“œì‹œ ê²Œì„ì˜¤ë²„
         {
             PlayerStop();
             gameOverUI.SetActive(true);
@@ -58,10 +58,10 @@ public class GameManager : MonoBehaviour
     {
         if (Instance == null)
         {
-            GameObject go = GameObject.Find("@GameManager"); //½Ì±ÛÅæ À¯ÀÏ¼º º¸Àå
+            GameObject go = GameObject.Find("@GameManager"); //ì‹±ê¸€í†¤ ìœ ì¼ì„± ë³´ì¥
             if (go == null)
             {
-                go = new GameObject { name = "@GameManager" }; //¾øÀ¸¸é »õ·Î ¸¸µê.
+                go = new GameObject { name = "@GameManager" }; //ì—†ìœ¼ë©´ ìƒˆë¡œ ë§Œë“¦.
                 go.AddComponent<GameManager>();
             }
 
@@ -83,7 +83,7 @@ public class GameManager : MonoBehaviour
             escapeUI.SetActive(true);
             PlayerStop();
             //GameState currentGameState = GameManager.Instance.CurrentGameState;
-            GameManager.Instance.SetState(GameState.gameover); //°ÔÀÓ ½ºÅ×ÀÌÆ® º¯°æ
+            GameManager.Instance.SetState(GameState.gameover); //ê²Œì„ ìŠ¤í…Œì´íŠ¸ ë³€ê²½
             Debug.Log("escape!");
         }
         else if (exitName == "Ladder")

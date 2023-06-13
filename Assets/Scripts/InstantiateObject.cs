@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//ì•„ì´í…œ(ë²„ì„¯ì´ë‚˜ ë¬¼ë³‘ ë‚˜ì¹¨ë°˜ ë“±) ëœë¤ ìœ„ì¹˜ ìƒì„± ì½”ë“œ
+//¾ÆÀÌÅÛ(¹ö¼¸ÀÌ³ª ¹°º´ ³ªÄ§¹İ µî) ·£´ı À§Ä¡ »ı¼º ÄÚµå
 public class InstantiateObject : MonoBehaviour
 {
     public GameObject prefab;
@@ -37,11 +37,11 @@ public class InstantiateObject : MonoBehaviour
         float randX = UnityEngine.Random.Range(xTerrainPos, xTerrainPos + terrainWidth);
         float randZ = UnityEngine.Random.Range(zTerrainPos, zTerrainPos + terrainLength);
         float yVal = Terrain.activeTerrain.SampleHeight(new Vector3(randX, 0, randZ));
-        
+
         yVal = yVal + yOffset;
 
         //Generate the Prefab on the generated position
-        //terrain ë ë¶€ë¶„ì—ì„œ ë–¨ì–´ì§ ë°©ì§€
+        //terrain ³¡ ºÎºĞ¿¡¼­ ¶³¾îÁü ¹æÁö
         transform.position = new Vector3(randX - 0.5f, yVal, randZ - 0.5f);
     }
 

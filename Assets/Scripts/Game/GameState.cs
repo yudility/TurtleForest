@@ -1,6 +1,6 @@
 public enum GameState
 {
     Gameplay,
-    Paused,
+    Pause,
     gameover
 }
