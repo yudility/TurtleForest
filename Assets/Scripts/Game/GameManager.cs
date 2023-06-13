@@ -24,24 +24,37 @@ public class GameManager : MonoBehaviour
         OnGameStateChanged?.Invoke(newGameState);
     }
 
-    public GameObject gameOverUI;
-    public GameObject rescuedUI;
-    public GameObject escapeUI;
-    public GameObject player;
-    public GameObject footStep;
+    private static GameObject gameOverUI;
+    private static GameObject rescuedUI;
+    private static GameObject escapeUI;
+    public static GameObject player;
+    private static GameObject footStep;
+    private static Transform rescuedTransform;
+    //public GameObject PlayerPrefab;
 
 
+    /*void Awake()
+    {
+        init();
+    }*/
 
     void Start()
     {
         init();
-        
+       // FindUIObjects();
     }
 
+    void OnDestroy()
+    {
+        if (Instance == this)
+        {
+            Instance = null;
+        }
+    }
 
+    
     void Update()
     {
-        
         float hp = HPgauge.HP; //전역 변수 hp 값을 가져오기
         //Debug.Log("hp:" + hp)
 
@@ -49,6 +62,7 @@ public class GameManager : MonoBehaviour
         {
             PlayerStop();
             gameOverUI.SetActive(true);
+            player.transform.Find("OVRCameraRig/TrackingSpace/GameOverUI").gameObject.SetActive(true);
         }
 
     }
@@ -70,7 +84,30 @@ public class GameManager : MonoBehaviour
             Instance = go.GetComponent<GameManager>();
         }
 
+        player = GameObject.Find("Player"); // PLAYER 객체 가져오기
+
+        if (player != null)
+        {
+           /*gameOverUI = GameObject.Find("player").transform.Find("GameOverUI");
+            escapeUI = GameObject.Find("player").transform.Find("EscapeUI"); 
+            rescuedUI = GameObject.Find("player").transform.Find("RescuedUI"); // escapeUI 가져오기
+            //Debug.Log("rescuedUI: " + rescuedUI);
+            footStep = GameObject.transform.Find("FootStep"); // footStep 가져오기 */
+        }
+        else
+        {
+            player = Resources.Load<GameObject>("Player");
+            player.name = "Player";
+            Debug.Log("player load");
+
+            // If player is null, instantiate it using the PlayerPrefab
+            if (player == null)
+            {
+                Debug.Log("Player prefab is not assigned!");
+            }
+        }
     }
+
 
     public void ShowGameOverUI(GameObject exitObject)
     {
@@ -80,7 +117,10 @@ public class GameManager : MonoBehaviour
 
         if (exitName == "escape")
         {
-            escapeUI.SetActive(true);
+            player.transform.Find("OVRCameraRig/TrackingSpace/EscapeUI").gameObject.SetActive(true);
+            
+
+            //GameObject.Find("Player").transform.Find("GameOverUI").gameObject.SetActive(true);
             PlayerStop();
             //GameState currentGameState = GameManager.Instance.CurrentGameState;
             GameManager.Instance.SetState(GameState.gameover); //게임 스테이트 변경
@@ -88,7 +128,8 @@ public class GameManager : MonoBehaviour
         }
         else if (exitName == "Ladder")
         {
-            rescuedUI.SetActive(true);
+            player.transform.Find("OVRCameraRig/TrackingSpace/RescuedUI").gameObject.SetActive(true);
+            //GameObject.Find("Player").transform.Find("RescuedUI").gameObject.SetActive(true);
             PlayerStop();
            //GameState currentGameState = GameManager.Instance.CurrentGameState;
             GameManager.Instance.SetState(GameState.gameover);
@@ -116,4 +157,21 @@ public class GameManager : MonoBehaviour
         }
         //Debug.Log("playerStop!");
     }
+
+    /*private void FindUIObjects()
+    {
+        gameOverUI = GameObject.Find("GameOverUI");
+        escapeUI = GameObject.Find("EscapeUI");
+        rescuedUI = GameObject.Find("RescuedUI");
+
+        // Check if the UI objects were found
+        if (gameOverUI == null)
+            Debug.Log("GameOverUI not found!");
+        if (escapeUI == null)
+            Debug.Log("EscapeUI not found!");
+        if (rescuedUI == null)
+            Debug.Log("RescuedUI not found!");
+    }*/
+
+
 }

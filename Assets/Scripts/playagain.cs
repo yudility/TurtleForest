@@ -7,7 +7,7 @@ using TMPro;
 public class playagain : MonoBehaviour
 {
     public void OnClick(){
-        SceneManager.LoadScene("playgame");
+        SceneManager.LoadScene(0);
     }
 }
 
