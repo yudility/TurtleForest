@@ -115,7 +115,7 @@ public class GameManager : MonoBehaviour
 
         Debug.Log("ExitName : " + exitName);
 
-        if (exitName == "escape")
+        if (exitName == "Escape")
         {
             player.transform.Find("OVRCameraRig/TrackingSpace/EscapeUI").gameObject.SetActive(true);
             

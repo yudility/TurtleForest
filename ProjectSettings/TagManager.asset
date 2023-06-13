@@ -6,15 +6,16 @@ TagManager:
   tags:
   - FieldItem
   - Exit
+  - Inventory
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
   - Exit
-  - 
+  - Hand
   - 
   - 
   - 
