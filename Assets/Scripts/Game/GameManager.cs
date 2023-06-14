@@ -55,14 +55,15 @@ public class GameManager : MonoBehaviour
     
     void Update()
     {
-        float hp = HPgauge.HP; //전역 변수 hp 값을 가져오기
+        float hp = HPgauge.GetInstance().GetHP(); // GetHP 메서드 호출하여 반환된 값을 가져오기
+
         //Debug.Log("hp:" + hp)
 
         if (hp <= 0.0) //반드시 게임오버
         {
             PlayerStop();
-            gameOverUI.SetActive(true);
-            player.transform.Find("OVRCameraRig/TrackingSpace/GameOverUI").gameObject.SetActive(true);
+            //gameOverUI.SetActive(true);
+            player.transform.Find("OVRCameraRig/TrackingSpace/GameOverUI").gameObject.SetActive(false);
         }
 
     }
@@ -118,22 +119,25 @@ public class GameManager : MonoBehaviour
         if (exitName == "Escape")
         {
             player.transform.Find("OVRCameraRig/TrackingSpace/EscapeUI").gameObject.SetActive(true);
-            
 
+            OVRInput.SetControllerVibration(1, 1, OVRInput.Controller.RTouch);
+            OVRInput.SetControllerVibration(1, 1, OVRInput.Controller.LTouch);
             //GameObject.Find("Player").transform.Find("GameOverUI").gameObject.SetActive(true);
             PlayerStop();
             //GameState currentGameState = GameManager.Instance.CurrentGameState;
             GameManager.Instance.SetState(GameState.gameover); //게임 스테이트 변경
-            Debug.Log("escape!");
+            //Debug.Log("escape!");
         }
         else if (exitName == "Ladder")
         {
+            OVRInput.SetControllerVibration(1, 1, OVRInput.Controller.RTouch);
+            OVRInput.SetControllerVibration(1, 1, OVRInput.Controller.LTouch);
             player.transform.Find("OVRCameraRig/TrackingSpace/RescuedUI").gameObject.SetActive(true);
             //GameObject.Find("Player").transform.Find("RescuedUI").gameObject.SetActive(true);
             PlayerStop();
            //GameState currentGameState = GameManager.Instance.CurrentGameState;
             GameManager.Instance.SetState(GameState.gameover);
-            Debug.Log("rescued!");
+            //Debug.Log("rescued!");
         }
     }
 
@@ -150,7 +154,7 @@ public class GameManager : MonoBehaviour
             player.transform.Find("FootSteps").gameObject.SetActive(false);
 
 
-            Debug.Log("GameOver!");
+            //Debug.Log("GameOver!");
         }
         else
         {

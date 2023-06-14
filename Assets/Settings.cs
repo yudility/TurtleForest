@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Settings : MonoBehaviour
 {
+
     public GameObject Panel;
     public GameObject Setting;
     
@@ -14,7 +15,7 @@ public class Settings : MonoBehaviour
     {
         if (Panel.activeSelf==false)
         {
-            Debug.Log("Panel.activeSelf= " + Panel.activeSelf);
+            //Debug.Log("Panel.activeSelf= " + Panel.activeSelf);
             closeSetting();
         }
     }
@@ -23,6 +24,6 @@ public class Settings : MonoBehaviour
     {
         Setting.SetActive(false);
 
-        Debug.Log("Setting.SetActive - fasle");
+       // Debug.Log("Setting.SetActive - fasle");
     }
 }

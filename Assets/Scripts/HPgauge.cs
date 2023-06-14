@@ -7,43 +7,67 @@ public class HPgauge : MonoBehaviour
 {
     Image HPBar;
     float maxHP = 300f;
-    public static float HP;
+    private static HPgauge instance;
+    private float HP;
 
-    void Awake()
+    public static HPgauge GetInstance()
     {
-        //GameManager.Instance.OnGameStateChanged += OnGameStateChanged; //이벤트 구독
+        return instance;
+    }
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else if (instance != this)
+        {
+            Destroy(gameObject);
+        }
+
+        DontDestroyOnLoad(gameObject);
+
         GameManager.GetInstance().OnGameStateChanged += OnGameStateChanged;
     }
 
-    void OnDestroy()
+    private void OnDestroy()
     {
-        GameManager.GetInstance().OnGameStateChanged -= OnGameStateChanged; //이벤트 구독 취소
+        GameManager.GetInstance().OnGameStateChanged -= OnGameStateChanged;
     }
 
-
-
-    void Start()
+    private void Start()
     {
         HPBar = GetComponent<Image>();
         HP = maxHP;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (GameManager.GetInstance().CurrentGameState == GameState.Gameplay)
         {
             HP -= Time.deltaTime;
             HPBar.fillAmount = HP / maxHP;
         }
- 
+        HPBar.fillAmount = HP / maxHP;
     }
 
-
-    private void OnGameStateChanged(GameState newgameState)
+    private void OnGameStateChanged(GameState newGameState)
     {
-        PlayerPrefs.SetFloat("HpScore", HP / maxHP); //gamestate 변경 이벤트 발생시 저장
-        Debug.Log("newgameState : " + newgameState + " // HpScore saved :" + HP / maxHP);
+        if (newGameState != GameState.Gameplay)
+        {
+            PlayerPrefs.SetFloat("HpScore", HP / maxHP);
+            Debug.Log("newGameState : " + newGameState + " // HpScore saved :" + HP / maxHP);
+        }
+    }
 
+    public float GetHP()
+    {
+        return HP;
+    }
+
+    public void SetHP(float value)
+    {
+        HP = value;
     }
 }

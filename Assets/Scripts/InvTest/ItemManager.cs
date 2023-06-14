@@ -24,12 +24,16 @@ public class ItemManager : MonoBehaviour
 
     private void Flask()
     {
-        HPgauge.HP += 10;
+        float hp = HPgauge.GetInstance().GetHP(); // GetHP 메서드 호출하여 반환된 값을 가져오기
+        hp += 10f;
+        HPgauge.GetInstance().SetHP(hp);
     }
 
     private void Snickers()
     {
-        HPgauge.HP += 10;
+        float hp = HPgauge.GetInstance().GetHP(); // GetHP 메서드 호출하여 반환된 값을 가져오기
+        hp += 10f;
+        HPgauge.GetInstance().SetHP(hp);
     }
 }
 

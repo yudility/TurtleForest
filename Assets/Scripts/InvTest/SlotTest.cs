@@ -101,7 +101,7 @@ public class SlotTest : MonoBehaviour
         UpdateInfo(isSlot, ItemImg.sprite);
         
 
-        string itemName = slot.Peek().Name;
+        string itemName = currentItem.Name;
 
         // ItemManager 오브젝트 찾기
         ItemManager itemManager = GameObject.FindObjectOfType<ItemManager>();

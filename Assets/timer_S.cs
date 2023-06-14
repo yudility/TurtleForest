@@ -12,7 +12,8 @@ public class timer_S : MonoBehaviour
 
     private void Start()
     {
-        time = 480; //8분으로 설정
+        //time = 480; //8분으로 설정
+        time = 50;//테스트용
         UpdateTimerText(); // 시작할 때 텍스트 업데이트
         GameManager.GetInstance().OnGameStateChanged += OnGameStateChanged;
     }

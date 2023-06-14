@@ -26,12 +26,15 @@ public class MushroomHP : MonoBehaviour
             {
                 if (randomValue < 0.5f)
                 {
-                    HPgauge.HP -= 20f;
+                    float hp = HPgauge.GetInstance().GetHP(); // GetHP 메서드 호출하여 반환된 값을 가져오기
+                    hp -= 20f;
+                    HPgauge.GetInstance().SetHP(hp);
                 }
                 else
                 {
-                    //hpGauge.HP += 10f;
-                    HPgauge.HP += 20f;
+                    float hp = HPgauge.GetInstance().GetHP(); // GetHP 메서드 호출하여 반환된 값을 가져오기
+                    hp += 20f;
+                    HPgauge.GetInstance().SetHP(hp);
                 }
 
                 mushroom.SetActive(false);

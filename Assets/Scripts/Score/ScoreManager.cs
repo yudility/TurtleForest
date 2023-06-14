@@ -8,6 +8,7 @@ public class ScoreManager : MonoBehaviour
 {
 
     private ScoreData sd;
+    private Score userScore;
 
     // Start is called before the first frame update
     void Awake()
@@ -20,6 +21,8 @@ public class ScoreManager : MonoBehaviour
 
     void Start()
     {
+        
+
         var json = PlayerPrefs.GetString("scores", "{}");
         //sd = new ScoreData();
 

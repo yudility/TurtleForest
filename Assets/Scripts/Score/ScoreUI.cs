@@ -20,33 +20,33 @@ public class ScoreUI : MonoBehaviour
     public void LoadLeaderBoard()
     {
         var scores = scoreManager.GetHighScores().ToArray();
-
-        for (int i = 0; i < 5; i++)
+        int numScores = scores.Length;
+        if (numScores != 0)
         {
-            
-            var row = Instantiate(rowUi, transform).GetComponent<RowUI>();
-            row.rank.text = (i + 1).ToString();
-            row.nickname.text = scores[i].nickname;
-
-            if (scores[i].timeScore >= 0)
+            for (int i = 0; i < Mathf.Min(numScores, 5); i++)
             {
-                int minutes = Mathf.FloorToInt(8 - scores[i].timeScore / 60f);
-                int seconds = Mathf.FloorToInt(60 - scores[i].timeScore % 60f);
-                row.score.text = string.Format("{0:0}:{1:00}", minutes, seconds);
+                var row = Instantiate(rowUi, transform).GetComponent<RowUI>();
+                row.rank.text = (i + 1).ToString();
+                row.nickname.text = scores[i].nickname;
 
-            }
-            else
-            {
-                int hp_percent = Mathf.FloorToInt(scores[i].hpScore * 100);
-                //PlayerScores[i].text = leaderboardScores[i].ToString() + "hp";
-                row.score.text = string.Format("{0}hp", hp_percent);
+                if (scores[i].timeScore >= 0)
+                {
+                    int minutes = Mathf.FloorToInt(8 - scores[i].timeScore / 60f);
+                    int seconds = Mathf.FloorToInt(60 - scores[i].timeScore % 60f);
+                    row.score.text = string.Format("{0:0}:{1:00}", minutes, seconds);
+                }
+                else
+                {
+                    int hp_percent = Mathf.FloorToInt(scores[i].hpScore * 100);
+                    row.score.text = string.Format("{0}hp", hp_percent);
+                }
 
+                Debug.Log("nickname!: " + scores[i].nickname);
+                Debug.Log("timeScore!: " + scores[i].timeScore);
+                Debug.Log("hpScore!: " + scores[i].hpScore);
             }
-            Debug.Log("nickname!: " + scores[i].nickname);
-            Debug.Log("timeScore!: " + scores[i].timeScore);
-            Debug.Log("hpScore!: " + scores[i].hpScore);
         }
-       
+
     }
 
     public void AddNewUsersScore()
