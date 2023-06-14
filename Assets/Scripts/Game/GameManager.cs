@@ -146,9 +146,10 @@ public class GameManager : MonoBehaviour
             //Debug.Log(playerController);
             playerController.EnableRotation = false;
             playerController.EnableLinearMovement = false;
-            footStep.SetActive(false);
-
-
+            player.transform.Find("FootStep").gameObject.SetActive(true);
+            //footStep.SetActive(false);
+        
+        
             Debug.Log("GameOver!");
         }
         else

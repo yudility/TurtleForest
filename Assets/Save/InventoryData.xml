@@ -1,1 +1,3 @@
-<ItemDB />
+<ItemDB>
+  <Item SlotNumber="0" Name="Flask" Count="1" MaxCount="1" />
+</ItemDB>
