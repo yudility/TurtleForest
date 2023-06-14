@@ -11,6 +11,8 @@ public class SlotTest : MonoBehaviour
     public TextMeshProUGUI text;       // 아이템에 개수를 표현해줄 텍스트.
     public Sprite DefaultImg; // 슬롯에 있는 아이템을 다 사용할 경우 아무것도 없는 이미지를 넣어줄 필요가 있다.
 
+    public GameObject itemPrefab; //찾아서 프리팹 담을 곳
+
     private Image ItemImg;
     private bool isSlot;     // 현재 슬롯이 비어있는지?
 
@@ -49,7 +51,7 @@ public class SlotTest : MonoBehaviour
     }
 
     // 아이템 사용.
-    public void ItemUse()
+    /*public void ItemUse()
     {
         // 슬롯이 비어있으면 함수를 종료.
         if (!isSlot)
@@ -68,10 +70,10 @@ public class SlotTest : MonoBehaviour
 
         slot.Pop();
         UpdateInfo(isSlot, ItemImg.sprite);
-    }
+    }*/
 
-    /*
-    public GameObject itemPrefab;
+   
+   
 
     public void ItemUse()
     {
@@ -88,17 +90,17 @@ public class SlotTest : MonoBehaviour
         ItemTest currentItem = slot.Pop();
         UpdateInfo(isSlot, ItemImg.sprite);
 
-        string itemName = currentItem.Name;
-        GameObject itemObject = InstantiateItemObject(itemName);
-        if (itemObject != null)
+        string itemName = slot.Peek().Name;
+
+        // ItemManager 오브젝트 찾기
+        ItemManager itemManager = GameObject.FindObjectOfType<ItemManager>();
+        if (itemManager != null)
         {
-            MyItemScript myItemScript = itemObject.GetComponent<MyItemScript>();
-            if (myItemScript != null)
-            {
-                myItemScript.MyItemUsed();
-            }
+            // 아이템 이름에 따른 함수 실행
+            itemManager.ExecuteItemFunction(itemName);
         }
     }
+    
 
     private GameObject InstantiateItemObject(string itemName)
     {
@@ -112,7 +114,7 @@ public class SlotTest : MonoBehaviour
         }
         return instantiatedObject;
     }
-}*/
+
 
 // 슬롯에 대한 각종 정보 업데이트.
 public void UpdateInfo(bool isSlot, Sprite sprite)
