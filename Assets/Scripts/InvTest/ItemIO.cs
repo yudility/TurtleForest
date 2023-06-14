@@ -8,8 +8,9 @@ public sealed class ItemIO
 {
     public static void SaveDate()
     {
+        GameObject player = GameObject.Find("Player");
         // 인벤토리에서 슬롯을 관리해주는 리스트를 받아온다.
-        List<GameObject> item = GameObject.FindGameObjectWithTag("Inventory").GetComponent<InventoryTest>().AllSlot;
+        List<GameObject> item = player.transform.Find("OVRCameraRig/TrackingSpace/Canvas/InventoryUI").gameObject.GetComponent<InventoryTest>().AllSlot;
 
         XmlDocument XmlDoc = new XmlDocument();             // XML문서 생성.
         XmlElement XmlEl = XmlDoc.CreateElement("ItemDB");  // 요소 생성.

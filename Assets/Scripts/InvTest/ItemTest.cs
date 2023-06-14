@@ -80,9 +80,25 @@ public class ItemTest : MonoBehaviour
             Debug.Log("SecondaryHandTrigger = " + SecHandTrigger);
             // 플레이어 hand와 충돌하면.
             if (collision.gameObject.layer == 7)
+            {
+                //OVRInput.SetControllerVibration(1, 1, OVRInput.Controller.RTouch);
+                //StartCoroutine(Haptics(1, 0.5f, 0.1f, true, false));
                 AddItem();
+            }
+                
         }
     }
+    IEnumerator Haptics(float frequency, float amplitude, float duration, bool rightHand, bool leftHand)
+    {
+        if(rightHand) OVRInput.SetControllerVibration(frequency, amplitude, OVRInput.Controller.RTouch);
+        if(leftHand) OVRInput.SetControllerVibration(frequency, amplitude, OVRInput.Controller.LTouch);
+
+        yield return new WaitForSeconds(duration);
+
+        if (rightHand) OVRInput.SetControllerVibration(0, 0, OVRInput.Controller.RTouch);
+        if (leftHand) OVRInput.SetControllerVibration(0, 0, OVRInput.Controller.LTouch);
+    }
+
 
     /*public bool Use()
     {

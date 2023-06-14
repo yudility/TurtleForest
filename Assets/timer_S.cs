@@ -14,7 +14,7 @@ public class timer_S : MonoBehaviour
     {
         time = 480; //8분으로 설정
         UpdateTimerText(); // 시작할 때 텍스트 업데이트
-        //GameManager.GetInstance().OnGameStateChanged += OnGameStateChanged;
+        GameManager.GetInstance().OnGameStateChanged += OnGameStateChanged;
     }
 
     void Awake()
@@ -27,15 +27,17 @@ public class timer_S : MonoBehaviour
         GameManager.GetInstance().OnGameStateChanged -= OnGameStateChanged; //이벤트 구독 취소
     }
 
+
+
     private void OnGameStateChanged(GameState newgameState)
     {
         PlayerPrefs.SetFloat("TimeScore", time); // gamestate 변경 이벤트 발생시 저장
         Debug.Log("newgameState : " + newgameState + " // timer saved :" + time);
 
-        if (newgameState == GameState.Gameplay)
+        /*if (newgameState == GameState.Gameplay)
         {
             UpdateTimerText(); // Gameplay 상태로 변경되었을 때 텍스트 업데이트
-        }
+        }*/
     }
 
     void Update()

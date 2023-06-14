@@ -32,6 +32,7 @@ public class CollideDetection : MonoBehaviour
             //collidedObject = collision.gameObject;
             GameManager.GetInstance().ShowGameOverUI(ExitObject);
             Debug.Log("collision Exit");
+            Destroy(ExitObject);
         }          
     }
 }

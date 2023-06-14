@@ -33,10 +33,10 @@ public class GameManager : MonoBehaviour
     //public GameObject PlayerPrefab;
 
 
-    /*void Awake()
+    void Awake()
     {
         init();
-    }*/
+    }
 
     void Start()
     {
@@ -146,10 +146,10 @@ public class GameManager : MonoBehaviour
             //Debug.Log(playerController);
             playerController.EnableRotation = false;
             playerController.EnableLinearMovement = false;
-            player.transform.Find("FootStep").gameObject.SetActive(true);
-            //footStep.SetActive(false);
-        
-        
+            //player.transform.Find("FootStep").gameObject.SetActive(false);
+            player.transform.Find("FootSteps").gameObject.SetActive(false);
+
+
             Debug.Log("GameOver!");
         }
         else
