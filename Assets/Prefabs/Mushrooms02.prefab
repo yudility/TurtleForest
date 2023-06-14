@@ -105,6 +105,7 @@ GameObject:
   - component: {fileID: 4000014173955460}
   - component: {fileID: 33000014171053800}
   - component: {fileID: 23000013828234224}
+  - component: {fileID: 1853605740566878929}
   m_Layer: 0
   m_Name: Mushrooms02
   m_TagString: Untagged
@@ -179,6 +180,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1853605740566878929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000013801618936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1180d6b5b5043ba43a827f777b599620, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mushroom: {fileID: 1000013801618936}
 --- !u!1 &5609663477716737872
 GameObject:
   m_ObjectHideFlags: 0

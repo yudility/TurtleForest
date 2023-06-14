@@ -9,18 +9,29 @@ public class SceneController : MonoBehaviour
     {
         if (sceneName == "StartScene")
         {
-            GameManager gameManager = GameManager.GetInstance();
-            if (gameManager.CurrentGameState == GameState.Pause)
+
+            //GameManage gameManager = GameManager.GetInstance();
+            /* if (GameManager.CurrentGameState == GameState.Pause)
+             {
+                 Debug.Log("gameManager.CurrentGameState before ChangeScene - StartScene :"+ gameManager.CurrentGameState)
+                 GameManager.SetState(GameState.gameover);
+             }
+             else if (GameManager.CurrentGameState == GameState.Gameplay)
+             {
+                 GameManager.SetState(GameState.gameover);
+             }*/
+
+            if (GameManager.GetInstance().CurrentGameState != GameState.gameover)
             {
-                gameManager.SetState(GameState.gameover);
+                GameManager.GetInstance().SetState(GameState.gameover);
             }
         }
         else if (sceneName == "PlayScene-test")
         {
-            GameManager gameManager = GameManager.GetInstance();
-            if (gameManager.CurrentGameState != GameState.Gameplay)
+            //GameManager gameManager = GameManager.GetInstance();
+            if (GameManager.GetInstance().CurrentGameState != GameState.Gameplay)
             {
-                gameManager.SetState(GameState.Gameplay);
+                GameManager.GetInstance().SetState(GameState.Gameplay);
             }
         }
 

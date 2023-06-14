@@ -72,8 +72,17 @@ public class SlotTest : MonoBehaviour
         UpdateInfo(isSlot, ItemImg.sprite);
     }*/
 
-   
-   
+   /* IEnumerator Haptics(float frequency, float amplitude, float duration, bool rightHand, bool leftHand)
+    {
+        if (rightHand) OVRInput.SetControllerVibration(frequency, amplitude, OVRInput.Controller.RTouch);
+        if (leftHand) OVRInput.SetControllerVibration(frequency, amplitude, OVRInput.Controller.LTouch);
+
+        yield return new WaitForSeconds(duration);
+
+        if (rightHand) OVRInput.SetControllerVibration(0, 0, OVRInput.Controller.RTouch);
+        if (leftHand) OVRInput.SetControllerVibration(0, 0, OVRInput.Controller.LTouch);
+    }*/
+
 
     public void ItemUse()
     {
@@ -85,10 +94,12 @@ public class SlotTest : MonoBehaviour
             slot.Clear();
             UpdateInfo(false, DefaultImg);
             return;
+            //StartCoroutine(Haptics(1, 1, 0.1f, false, true));
         }
 
         ItemTest currentItem = slot.Pop();
         UpdateInfo(isSlot, ItemImg.sprite);
+        
 
         string itemName = slot.Peek().Name;
 
@@ -114,10 +125,10 @@ public class SlotTest : MonoBehaviour
         }
         return instantiatedObject;
     }
+   
 
-
-// 슬롯에 대한 각종 정보 업데이트.
-public void UpdateInfo(bool isSlot, Sprite sprite)
+    // 슬롯에 대한 각종 정보 업데이트.
+    public void UpdateInfo(bool isSlot, Sprite sprite)
     {
         this.isSlot = isSlot;
         transform.GetChild(0).GetComponent<Image>().sprite = sprite;

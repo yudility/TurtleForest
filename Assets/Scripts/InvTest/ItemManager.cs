@@ -10,10 +10,10 @@ public class ItemManager : MonoBehaviour
         switch (itemName)
         {
             case "Flask":
-                ExecuteFlask();
+                Flask();
                 break;
-            case "ItemB":
-                ExecuteItemB();
+            case "Snickers":
+                Snickers();
                 break;
             // 추가적인 아이템에 따른 처리
             default:
@@ -22,13 +22,14 @@ public class ItemManager : MonoBehaviour
         }
     }
 
-    private void ExecuteFlask()
+    private void Flask()
     {
-        
+        HPgauge.HP += 10;
     }
 
-    private void ExecuteItemB()
+    private void Snickers()
     {
-        // ItemB에 대한 동작 처리
+        HPgauge.HP += 10;
     }
 }
+

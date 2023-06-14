@@ -40,8 +40,7 @@ public class OVRRaycaster : GraphicRaycaster, IPointerEnterHandler
     public int sortOrder = 0;
 
     protected OVRRaycaster()
-    {
-    }
+    {}
 
     [NonSerialized]
     private Canvas m_Canvas;

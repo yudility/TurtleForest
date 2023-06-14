@@ -18,6 +18,15 @@ public class ScoreManager : MonoBehaviour
         sd = JsonUtility.FromJson<ScoreData>(json);
     }
 
+    void Start()
+    {
+        var json = PlayerPrefs.GetString("scores", "{}");
+        //sd = new ScoreData();
+
+        sd = JsonUtility.FromJson<ScoreData>(json);
+
+    }
+
 
     public IEnumerable<Score> GetHighScores()
     {
@@ -36,10 +45,13 @@ public class ScoreManager : MonoBehaviour
 
     public void AddScore(Score score)
     {
-        sd.scores.Add(score);
-        Debug.Log("nickname!: " + score.nickname);
-        Debug.Log("timeScore!: " + score.timeScore);
-        Debug.Log("hpScore!: " + score.hpScore);
+        if (score.nickname != null)
+        {
+            sd.scores.Add(score);
+            Debug.Log("nickname!: " + score.nickname);
+            Debug.Log("timeScore!: " + score.timeScore);
+            Debug.Log("hpScore!: " + score.hpScore);
+        }
     }
 
     private void OnDestroy()
